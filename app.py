@@ -6,7 +6,7 @@ st.title("💬 Test ChatGPT avec Streamlit Cloud")
 
 
 # Récupération de la clé API depuis les secrets
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = openai(api_key=st.secrets["OPENAI_API_KEY"])
 # Set a default model
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
