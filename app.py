@@ -32,6 +32,7 @@ def login():
             
                 
 def chat():
+    st.image("it")
     # Récupération de la clé API depuis les secrets
     client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
     
