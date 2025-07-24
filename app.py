@@ -26,7 +26,7 @@ def login():
             elif check.strip().lower() == "veronica":
                 st.subheader(" Benvenuta Veronica 😊 !")
                 st.session_state.checked = True
-                time.sleep(2)
+                time.sleep(1)
                 st.rerun()
         else:
             st.stop()
