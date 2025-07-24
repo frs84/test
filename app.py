@@ -1,8 +1,10 @@
 import streamlit as st
 from openai import OpenAI
-st.title("💬 Test ChatGPT avec Streamlit Cloud")
+st.title("💬 Parli italiano ?")
 
-
+check = st.input("Ciao, chi è ?")
+if check.strip().lower() != veronica:
+    st.stop
 
 # Récupération de la clé API depuis les secrets
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
