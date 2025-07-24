@@ -19,6 +19,9 @@ def login():
                 st.subheader(" Benvenuta Veronica 😊 !")
                 st.session_state.checked = True
                 time.sleep(2)
+        else:
+            st.stop()
+            
                 
 def chat():
     # Récupération de la clé API depuis les secrets
