@@ -4,7 +4,7 @@ st.title("💬 Parli italiano ?")
 
 check = st.text_input("Ciao, chi è ?")
 if check.strip().lower() != "veronica":
-    st.stop
+    st.stop()
 
 # Récupération de la clé API depuis les secrets
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
