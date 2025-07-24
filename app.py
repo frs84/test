@@ -24,7 +24,7 @@ def login():
                 st.warning("Bel tentativo, ma no.")
                 st.stop()
             elif check.strip().lower() == "veronica":
-                st.subheader(" Benvenuta Veronica 😊 !")
+                st.subheader(" Salut Maman 😊 !")
                 st.session_state.checked = True
                 time.sleep(1)
                 st.rerun()
