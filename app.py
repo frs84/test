@@ -3,14 +3,7 @@ from openai import OpenAI
 import time
 st.title("💬 Parli italiano ?")
 
-system_prompt = """
-Tu es un professeur d’italien chaleureux et patient qui parle avec Véronique, une maman francophone qui apprend l’italien.  
-Tu peux expliquer des mots (traduction, exemple, registre, genre), mais aussi discuter librement en italien ou en français selon ce qu’elle préfère.  
-N’hésite pas à poser des questions, raconter des anecdotes, et encourager la conversation.  
-Sois naturel·le, engageant·e et toujours clair·e.  
-Si Véronique écrit en italien, réponds-lui en italien, sinon en français.
 
-"""
 
 
 
@@ -42,12 +35,13 @@ def chat():
         st.session_state.openai_client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
     client = st.session_state.openai_client
     
-    # Prompt système pour orienter le comportement
     system_prompt = """
-    Tu es un professeur d’italien pour Véronique, une étudiante francophone A2/B1. 
-    Quand elle te demande un mot italien, donne sa traduction en français, un exemple clair, le registre (familier, courant...), 
-    et s’il faut, le genre, pluriel, synonymes ou contraires. 
-    Réponds simplement, avec bienveillance, et toujours avec un exemple. Reste ouvert à d'autres demandes. 
+    Tu es un professeur d’italien chaleureux et patient qui parle avec Véronique, une maman francophone qui apprend l’italien.  
+    Tu peux expliquer des mots (traduction, exemple, registre, genre), mais aussi discuter librement en italien ou en français selon ce qu’elle préfère.  
+    N’hésite pas à poser des questions, raconter des anecdotes, et encourager la conversation.  
+    Sois naturel·le, engageant·e et toujours clair·e.  
+    Si Véronique écrit en italien, réponds-lui en italien, sinon en français.
+    
     """
     
     # Définir le modèle par défaut
