@@ -3,6 +3,13 @@ from openai import OpenAI
 import time
 st.title("💬 Parli italiano ?")
 
+system_prompt = """
+tu es Prof d’italien pour Véronique (étudiante francophone, maman de André, François, Claire, Alice et Lise). 
+Le plus souvent, explique les mots : traduction, exemple, registre, genre/pluriel si utile. 
+Toujours simple, clair et bienveillant. Reste ouvert à d'autres demandes. 
+"""
+
+
 def login():
     with st.form("login"):
         check = st.text_input("Ciao, chi è ?", type = "password")
@@ -27,36 +34,51 @@ def login():
 def chat():
     # Récupération de la clé API depuis les secrets
     client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
-    # Set a default model
+    
+    # Prompt système pour orienter le comportement
+    system_prompt = """
+    Tu es un professeur d’italien pour Véronique, une étudiante francophone A2/B1. 
+    Quand elle te demande un mot italien, donne sa traduction en français, un exemple clair, le registre (familier, courant...), 
+    et s’il faut, le genre, pluriel, synonymes ou contraires. 
+    Réponds simplement, avec bienveillance, et toujours avec un exemple. Reste ouvert à d'autres demandes. 
+    """
+    
+    # Définir le modèle par défaut
     if "openai_model" not in st.session_state:
         st.session_state["openai_model"] = "gpt-3.5-turbo"
-    # Initialize chat history
+    
+    # Initialiser l'historique des messages
     if "messages" not in st.session_state:
         st.session_state.messages = []
-    # Display chat messages from history on app rerun
+
+    # Afficher l’historique
     for message in st.session_state.messages:
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
     
-    if prompt:= st.text_input("Ton message :"):
-        # Add user message to chat history
+    # Champ de saisie utilisateur
+    if prompt := st.text_input("Scrivimi qui :"):
         st.session_state.messages.append({"role": "user", "content": prompt})
-        # Display user message in chat message container
+        
         with st.chat_message("user"):
             st.markdown(prompt)
-    
-    # Display assistant response in chat message container
+        
         with st.chat_message("assistant"):
             stream = client.chat.completions.create(
                 model=st.session_state["openai_model"],
                 messages=[
-                    {"role": m["role"], "content": m["content"]}
-                    for m in st.session_state.messages
+                    {"role": "system", "content": system_prompt},
+                    *[
+                        {"role": m["role"], "content": m["content"]}
+                        for m in st.session_state.messages
+                    ]
                 ],
                 stream=True,
             )
             response = st.write_stream(stream)
+        
         st.session_state.messages.append({"role": "assistant", "content": response})
+
 
 def app():
     if not st.session_state.get("checked",False):
