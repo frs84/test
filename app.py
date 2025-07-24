@@ -3,7 +3,7 @@ from openai import OpenAI
 st.title("💬 Parli italiano ?")
 
 check = st.text_input("Ciao, chi è ?")
-if check.strip().lower() != veronica:
+if check.strip().lower() != "veronica":
     st.stop
 
 # Récupération de la clé API depuis les secrets
