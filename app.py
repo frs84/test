@@ -34,7 +34,9 @@ def login():
 def chat():
     st.image("it")
     # Récupération de la clé API depuis les secrets
-    client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    if "openai_client" not in st.session_state:
+        st.session_state.openai_client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+    client = st.session_state.openai_client
     
     # Prompt système pour orienter le comportement
     system_prompt = """
