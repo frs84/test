@@ -21,6 +21,8 @@ def app():
     if not st.session_state.get("checked",False):
         login()
 
+app()
+
 # Récupération de la clé API depuis les secrets
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 # Set a default model
