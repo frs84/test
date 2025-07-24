@@ -19,6 +19,7 @@ def login():
                 st.subheader(" Benvenuta Veronica 😊 !")
                 st.session_state.checked = True
                 time.sleep(2)
+                st.rerun()
         else:
             st.stop()
             
