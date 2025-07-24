@@ -2,7 +2,7 @@ import streamlit as st
 from openai import OpenAI
 st.title("💬 Parli italiano ?")
 
-check = st.input("Ciao, chi è ?")
+check = st.text_input("Ciao, chi è ?")
 if check.strip().lower() != veronica:
     st.stop
 
