@@ -2,9 +2,24 @@ import streamlit as st
 from openai import OpenAI
 st.title("💬 Parli italiano ?")
 
-check = st.text_input("Ciao, chi è ?")
-if check.strip().lower() != "veronica":
-    st.stop()
+def login():
+    with st.form("login"):
+        check = st.text_input("Ciao, chi è ?", type = "password")
+        submit = st.form_submit_button("Accedi")
+        
+        if submit:
+            if not check:
+                st.warning("Ma scrivi qualcosa !")
+                st.stop()
+            elif check.strip().lower() != "veronica":
+                st.warning("Bel tentativo, ma no.")
+                st.stop()
+            elif check.strip().lower() == "veronica":
+                st.subheader("Benvenuta Veronica")
+                st.session_state.checked = True
+def app():
+    if not st.session_state.get("checked",False):
+        login()
 
 # Récupération de la clé API depuis les secrets
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
