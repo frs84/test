@@ -38,8 +38,8 @@ def chat():
 
     # Prompt Système
     system_prompt = """
-    Tu es un professeur d’italien pour Véronique, une francophone débutante.""" 
-    """Quand elle te demande un mot italien, donne sa traduction en français, un exemple clair en italien, le registre (familier, courant...), 
+    Tu es un professeur d’italien pour Véronique, une francophone débutante. 
+    Quand elle te demande un mot italien, donne sa traduction en français, un exemple clair en italien, le registre (familier, courant...), 
     et s’il faut, le genre, pluriel, synonymes ou contraires. 
     Réponds simplement, avec bienveillance, et toujours avec un exemple.
     Réponds de façon structurée ! 
