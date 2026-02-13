@@ -4,9 +4,6 @@ import time
 st.title("💬 Parli italiano ?")
 
 
-
-
-
 def login():
     with st.form("login"):
         check = st.text_input("Ciao, chi è ?", type = "password")
@@ -20,7 +17,7 @@ def login():
                 st.warning("Bel tentativo, ma no.")
                 st.stop()
             elif check.strip().lower() == "veronica":
-                st.subheader(" Salut Maman 😊 !")
+                st.subheader(" Ciao bella 😊 !")
                 st.session_state.checked = True
                 time.sleep(1)
                 st.rerun()
@@ -48,6 +45,10 @@ def chat():
     Quand elle te demande un mot italien, donne sa traduction en français, un exemple clair en italien, le registre (familier, courant...), 
     et s’il faut, le genre, pluriel, synonymes ou contraires. 
     Réponds simplement, avec bienveillance, et toujours avec un exemple.
+    Réponds de façon structurée ! 
+    Traduction :
+    Exemple :
+    ...
     """
     
     
