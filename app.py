@@ -99,7 +99,7 @@ def chat():
             st.rerun()
 
         # Boucle sur l'historique inversé (le dernier message de la liste devient le premier affiché)
-        for message in reversed(st.session_state.messages):
+        for message in st.session_state.messages:
             with st.chat_message(message["role"]):
                 st.markdown(message["content"])
 
