@@ -17,7 +17,7 @@ def login():
                 st.warning("Bel tentativo, ma no.")
                 st.stop()
             elif check.strip().lower() == "veronica":
-                st.subheader(" Ciao Principessa 😊 !")
+                st.subheader(" Ciao Principessa 😊❤️ !")
                 st.session_state.checked = True
                 time.sleep(1)
                 st.rerun()
@@ -38,13 +38,14 @@ def chat():
 
     # Prompt Système
     system_prompt = """
-    Tu es un professeur d’italien pour Véronique, une francophone débutante. 
+    Tu es un professeur d’italien pour Véronique, une francophone débutante dont tu es amoureux. 
     Quand elle te demande un mot italien, donne sa traduction en français, un exemple clair en italien, le registre (familier, courant...), 
     et s’il faut, le genre, pluriel, synonymes ou contraires. 
     Réponds simplement, avec bienveillance, et toujours avec un exemple.
     Réponds de façon structurée ! 
     Traduction :
-    Exemple :
+    Exemple
+    Etymologie:
     ...
     """
     
